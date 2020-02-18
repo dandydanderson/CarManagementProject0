@@ -8,7 +8,6 @@ import carlot.Car;
 import carlot.CarLot;
 import carlot.Offer;
 import daos.CarDao;
-import daos.UserDao;
 import user.User;
 
 public class UserServices {
@@ -50,14 +49,14 @@ public class UserServices {
 		
 	}
 	
-	public void printOfferList() {//Print out the offers on the lot directly from file
-		ArrayList<Offer> offerList = (ArrayList<Offer>) userCarDao.read().getOffers();
-		
-		for (int i = 0; i<offerList.size();i++) {
-			System.out.println(offerList.get(i).toString());
-		}
-		
-	}
+//	public void printOfferList() {//Print out the offers on the lot directly from file ///CarLot offerList is now where offers live
+//		ArrayList<Offer> offerList = (ArrayList<Offer>) userCarDao.read().getOffers();
+//		
+//		for (int i = 0; i<offerList.size();i++) {
+//			System.out.println(offerList.get(i).toString());
+//		}
+//		
+//	}
 	
 	public void printUserList() {//Print out the offers on the lot directly from file
 		ArrayList<User> userList = (ArrayList<User>) userCarDao.read().getUsers();

@@ -13,7 +13,7 @@ public class CarLot implements Serializable{
 
 	private String carLotName;
 	private List<Car> cars = new ArrayList<Car>();//these are all populated after UserServices loads the file
-	private List<Offer> offers = new ArrayList<Offer>();
+	private List<Offer> offers = new ArrayList<Offer>();//this needs to be removed, as it doesn't actually hold teh offers anymore
 	private List<User> users = new ArrayList<User>();
 	
 	
@@ -32,7 +32,7 @@ public class CarLot implements Serializable{
 		users.add(user);
 	}
 	
-	public boolean checkUserListForUser(String userName) {//checks if the user is on the user list and returns a boolean
+	public boolean checkUserListForUser(String userName) {//tested
 		
 		boolean check = false;
 		
@@ -42,6 +42,7 @@ public class CarLot implements Serializable{
 		
 		return check;
 	}
+	
 	public void addCarToCustomer(Car car, Customer cust) {
 		
 		for(int i =0;i<users.size();i++) {
@@ -140,7 +141,7 @@ public class CarLot implements Serializable{
 	
 	public void transferCarToCustomer(Car car, User customer) {
 		((Customer) customer).addCar(car);
-	}
+	}//this is a repeat method, but cleaner than the other. Need to refactor out the addCarToCustomer method and replace it with this
 	public Customer getCustomerFromCarOffer(Car car, String offerNum) {
 		Customer temp = new Customer("Null");
 		for(int i = 0;i<car.getOffers().size();i++) {
@@ -155,7 +156,8 @@ public class CarLot implements Serializable{
 	/////////////////////////////
 	//////Offers
 	//////////////////
-	public List<Offer> getOffers() {
+	public List<Offer> getOffers() {//this should create a new ArrayList and add all the offers instead of setting Lot offers to this. 
+									//Lot offers isn't used anywhere else.
 		
 	if(offers.isEmpty()) {
 		for(int i = 0; i<cars.size();i++) {
@@ -178,13 +180,13 @@ public class CarLot implements Serializable{
 			}
 		}
 	}
-	public void removeOffer(Offer offer) {
-		for(int i = 0; i<offers.size();i++) {
-			if (offers.get(i).equals(offer)){
-				offers.remove(i);
-			}
-		}
-	}
+//	public void removeOffer(Offer offer) {
+//		for(int i = 0; i<offers.size();i++) {
+//			if (offers.get(i).equals(offer)){
+//				offers.remove(i);
+//			}
+//		}
+//	}
 	
 	public void printMyOffers(Customer cust) {
 		
@@ -227,14 +229,14 @@ public class CarLot implements Serializable{
 			}
 		}
 	}
-	public void cleanOffers(String vinNum) {
-		for(int i = 0;i<offers.size();i++) {
-			if(offers.get(i).getCar().getVinNum().equals(vinNum)) {
-				offers.remove(i);
-				i-=1;
-			}
-		}
-	}
+//	public void cleanOffers(String vinNum) {//no longer needed
+//		for(int i = 0;i<offers.size();i++) {
+//			if(offers.get(i).getCar().getVinNum().equals(vinNum)) {
+//				offers.remove(i);
+//				i-=1;
+//			}
+//		}
+//	}
 	/////////////////////////////////////
 	/////Table Printers
 	/////////////////////

@@ -89,6 +89,12 @@ public class Car implements Serializable{
 		}
 	}
 	
+	public List<Payment> getPayments() {
+		return payments;
+	}
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
 	public void printPayments() {
 		for(int i = 0;i<payments.size();i++) {
 			System.out.println(payments.get(i).toString());

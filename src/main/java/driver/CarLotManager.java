@@ -222,7 +222,7 @@ public class CarLotManager {
 					 offer.setCar(tempCar);
 					 carLot.addCarToCustomer(offer.getCar(), offer.getOwner());
 					 carLot.removeCar(vinNum);
-					 carLot.cleanOffers(vinNum);
+					
 					 
 					break;
 				case "8"://Reject a vehicle offer
