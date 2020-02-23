@@ -1,0 +1,19 @@
+2020-02-21 08:30:48 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 08:30:57 INFO  root:290 - End of user session for: User [name=Bossman]
+2020-02-21 09:11:24 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:11:31 INFO  root:292 - End of user session for: User [name=Bossman]
+2020-02-21 09:11:42 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:11:46 INFO  root:81 - New User added: Sarah
+2020-02-21 09:12:19 INFO  root:292 - End of user session for: User [name=Sarah]
+2020-02-21 09:12:26 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:12:40 INFO  root:292 - End of user session for: User [name=Bossman]
+2020-02-21 09:42:22 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:43:41 INFO  root:200 - Car added to the lot: REDFERRARI
+2020-02-21 09:44:10 INFO  root:292 - End of user session for: User [name=Bossman]
+2020-02-21 09:44:14 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:45:03 INFO  root:292 - End of user session for: User [name=David]
+2020-02-21 09:45:06 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:45:35 INFO  root:222 - Vehicle offer accepted on: REDFERRARI
+2020-02-21 09:45:56 INFO  root:292 - End of user session for: User [name=Bossman]
+2020-02-21 09:45:59 INFO  root:27 - Beginning of user session for: User [name=null]
+2020-02-21 09:46:40 INFO  root:292 - End of user session for: User [name=David]

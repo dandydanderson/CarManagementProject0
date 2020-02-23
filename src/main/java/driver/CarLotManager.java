@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import carlot.Car;
 import carlot.CarLot;
 import carlot.Offer;
@@ -14,11 +16,16 @@ import user.Employee;
 import user.User;
 
 public class CarLotManager {
-
+	
+private static Logger log = Logger.getRootLogger();
+	
+	
 	public static void main(String[] args) {
 		
 		UserServices userService = new UserServices();
-    	CarLot carLot = userService.getCarLot(); //this will be the way it's done once all methods are finalized
+    	CarLot carLot = userService.getCarLot();     	//this will be the way it's done once all methods are finalized
+    	log.info("Beginning of user session for: " + userService.getUser().toString());
+    	
 //		CarLot carLot = new CarLot("David's Deals");
 //		Employee bossman  = new Employee("Bossman");
 //		userService.setUser(bossman);
@@ -71,7 +78,7 @@ public class CarLotManager {
 				userService.setUser(new Customer(input));
 				carLot.addUser(userService.getUser());
 				
-				
+				log.info("New User added: " + input);
 			}
 		
 		while(!userService.isFinished()) {
@@ -114,6 +121,7 @@ public class CarLotManager {
 				System.out.println("\n" + "What is your offer?");
 				amount = Double.valueOf(sc.nextLine());
 				carLot.addOffer(new Offer((Customer) userService.getUser(), amount, true), vinNum);
+			
 				break;
 			case "4"://view owned cars
 				((Customer) userService.getUser()).printOwnedCars();
@@ -189,6 +197,7 @@ public class CarLotManager {
 					Car newCar = new Car(make, model, color, vinNum);
 					carLot.addCar(newCar);
 					
+					log.info("Car added to the lot: " + vinNum);
 					System.out.println("\n" + "New car added to the lot: "+"\n"+newCar.toString());
 					
 					break;
@@ -196,7 +205,7 @@ public class CarLotManager {
 					System.out.println("\n" + "What is the vin numer of the car you would like to remove?");
 					vinNum = sc.nextLine();
 					carLot.removeCar(vinNum);
-					break;
+					log.info("Car Removed: " + vinNum);
 				case "5"://view all offers on a car
 					System.out.println("\n" + "What is the vin numer of the car you would like to to see offers on?");
 					vinNum = sc.nextLine();
@@ -210,7 +219,7 @@ public class CarLotManager {
 					vinNum = sc.nextLine();
 					System.out.println("\n" + "What is the offer number for that car?");
 					 String offerNum = sc.nextLine();
-					 
+						log.info("Vehicle offer accepted on: " + vinNum);
 			
 					//add the car to customer car list
 					 Offer offer = carLot.getAcceptedOffer(vinNum,offerNum);
@@ -232,6 +241,8 @@ public class CarLotManager {
 					offerNum = sc.nextLine();
 				
 					carLot.rejectOffer(vinNum, offerNum);
+					
+					log.info("Offer rejected on : " + vinNum);
 					
 					System.out.println("Remaining offers after removal: ");
 					carLot.printOfferList();
@@ -278,6 +289,7 @@ public class CarLotManager {
 		
 	
 		userService.saveCarLot(carLot);//always save any updates at the end
+		log.info("End of user session for: " + userService.getUser().toString());
 	}
 	}
 
