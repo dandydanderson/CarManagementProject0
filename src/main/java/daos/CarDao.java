@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -290,7 +291,7 @@ public class CarDao implements Dao {
 	@Override
 	public void acceptOffer(Offer offer) {
 
-		try(Connection conn = ConnectionFactory.getConnection()){//this changes the car ownership from teh lot to the user, and sets the price
+		try(Connection conn = ConnectionFactory.getConnection()){//this changes the car ownership from the lot to the user, and sets the price
 			
 			PreparedStatement ps = conn.prepareStatement("update cars set owner = ?, price = ? where vin_number = ?" );
 			ps.setInt(1, offer.getUserId());
@@ -316,7 +317,7 @@ public class CarDao implements Dao {
 			log.info("All other offers removed from that car");
 			
 		} catch (SQLException e) {
-			
+			log.warn("Unable reject all offers on this car at this time.");
 			e.printStackTrace();
 		}
 		
@@ -486,11 +487,48 @@ public class CarDao implements Dao {
 					paymentList.add(p);
 				}
 				
+				
 			} catch (SQLException e) {
+				log.warn("Unable to retrieve payments from the database");
 				e.printStackTrace();
 		}
 			
 			return paymentList;
+	}
+
+	@Override
+	public void sundaySundaySunday() {//takes 20% of the price of cars on the lot
+		
+		try(Connection conn = ConnectionFactory.getConnection()){
+			
+			CallableStatement cs = conn.prepareCall("call sundaySundaySunday()");
+			cs.execute();
+			log.info("Sale began.");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			log.warn("The sale was not able to be started");
+		}
+		
+	}
+
+	@Override
+	public void mondayMondayMonday() {//returns the cars to their original price
+	
+		try(Connection conn = ConnectionFactory.getConnection()){
+			
+			CallableStatement cs = conn.prepareCall("call mondayMondayMonday()");
+			cs.execute();
+			log.info("Sale ended");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			log.warn("The sale was not able to be removed.");
+		}
+		
+		
+		
+		
 	}
 
 

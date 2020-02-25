@@ -45,4 +45,10 @@ public interface Dao {
 	List<Car> getAllMyCars(int userId);
 	List<Payment> getAllMyPayments(int userId);
 	
+	
+	//FUNCTIONS AND PROCEDURES
+	
+	public void sundaySundaySunday();
+	public void mondayMondayMonday();
+	
 }

@@ -6,7 +6,18 @@ public class BlockPrinter {
 	public BlockPrinter() {
 		
 		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.println("        __-------__");
+		System.out.println("      / _---------_ ");
+		System.out.println("     / /           \\  ");
+		System.out.println("     | |           | |");
+		System.out.println("     |_|___________|_|\\");
+		System.out.println(" /-\\                 |/-\\");
+		System.out.println("| _ |\\      0       /| _ |");
+		System.out.println("|(_)| \\     !      / |(_)|");
+		System.out.println("|___|__\\____!_____/__|___|");
+		System.out.println("[_________|MEIN1|_________] ");
+		System.out.println(" ||||    ~~~~~~~~     ||||");
+		System.out.println(" `--'                 `--'");
 		
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------------------------------------------------------");
@@ -19,6 +30,11 @@ public class BlockPrinter {
 		System.out.println("----------------------------------------------------------------------------------------------");
 		
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+		
+		
+		
+		
+		
 		
 	}
 

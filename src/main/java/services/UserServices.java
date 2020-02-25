@@ -13,13 +13,21 @@ import user.User;
 
 public class UserServices {
 	
-	
+	private boolean sale = false;
 	private boolean finished = false;
 	private static CarDao userCarDao = new CarDao();//CarDao for the user
 	private User user = new User();
 
 
 	
+	public boolean saleActive() {
+		return sale;
+	}
+
+	public void setSale(boolean sale) {
+		this.sale = sale;
+	}
+
 	public CarDao getUserCarDao() {
 		return userCarDao;
 	}

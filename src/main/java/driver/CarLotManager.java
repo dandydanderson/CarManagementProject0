@@ -216,7 +216,9 @@ private static Logger log = Logger.getRootLogger();
 						+"\n"+"6. View all payments due."
 						+"\n"+"7. Accept a vehicle offer."
 						+"\n"+"8. Reject a vehicle offer."
-						+"\n"+"9. Log out"
+						+"\n"+"9. Start a sale!."
+						+"\n"+"10. End a sale."
+						+"\n"+"11. Log out"
 						);
 	
 				
@@ -298,7 +300,40 @@ private static Logger log = Logger.getRootLogger();
 					dao.rejectOffer(offerId);
 					
 					break;
-				case "9"://logout-done
+				case "9"://start sale!
+					
+					if(!userService.saleActive()) {
+						
+						
+						//call procedure
+						dao.sundaySundaySunday();
+						
+						
+						userService.setSale(true);
+						
+					}
+					else {
+						System.out.println("/n A sale is already active, you must end the previous sale before beginning another!");
+					}
+					
+					break;
+				case "10"://end sale
+	
+					if(userService.saleActive()) {
+						
+						
+						//call procedure
+						dao.mondayMondayMonday();
+						
+						userService.setSale(false);
+						
+					}
+					else {
+						System.out.println("/n There isn't a sale to end");
+					}
+	
+					break;
+				case "11"://logout-done
 					
 					userService.setFinished(true);
 					
