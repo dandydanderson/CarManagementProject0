@@ -31,7 +31,7 @@ private static Logger log = Logger.getRootLogger();
     	
     	String input = "N";
     	
-		CarLot carLot = new CarLot("David's Deals");
+//		CarLot carLot = new CarLot("David's Deals");
 //		Employee bossman  = new Employee("Bossman");
 //		userService.setUser(bossman);
 //		carLot.addUser(bossman);
@@ -78,11 +78,11 @@ private static Logger log = Logger.getRootLogger();
 		
 		String pw = sc.nextLine();
 		
-		userService.setUser(userService.getUserCarDao().getUser(un, pw));
+		userService.setUser(userService.getUserCarDao().getUser(un, pw,true));
 		
 		
 		
-		if (userService.getUserCarDao().getUser(un, pw) instanceof User){//already have an account
+		if (userService.getUserCarDao().getUser(un, pw,true) instanceof User){//already have an account
 			System.out.println("User Found!");
 			
 		}
@@ -106,7 +106,7 @@ private static Logger log = Logger.getRootLogger();
 				
 				User u = new User(un, pw, "customer");
 				
-				dao.addUser(u);
+				dao.addUser(u,true);
 				userService.setUser(u);
 				
 			}
@@ -143,11 +143,11 @@ private static Logger log = Logger.getRootLogger();
 				System.out.println("These are the cars available: ");
 				System.out.println("---------------------------------------------------------------------");
 				
-				userService.printLotList(dao.getAllCars());				
+				userService.printLotList(dao.getAllCars(true));				
 				break;
 			case "2"://check that individual users offers -done
 				System.out.println("\n" + "These are your offers:");
-				userService.printOfferList(dao.getAllMyOffers(userService.getUser().getUserId()));
+				userService.printOfferList(dao.getAllMyOffers(userService.getUser().getUserId(),true));
 				break;
 			case "3"://add an offer on a car  -done
 				
@@ -172,7 +172,7 @@ private static Logger log = Logger.getRootLogger();
 				
 				Offer offer = new Offer(userService.getUser().getUserId(), vinNum, amount, false);
 				
-				dao.addOffer(offer);
+				dao.addOffer(offer,true);
 				
 				
 				
@@ -181,10 +181,10 @@ private static Logger log = Logger.getRootLogger();
 			
 				break;
 			case "4"://view owned cars -done
-				userService.printLotList(dao.getAllMyCars(userService.getUser().getUserId()));
+				userService.printLotList(dao.getAllMyCars(userService.getUser().getUserId(),true));
 				break;
 			case "5"://view all payments due -done
-				userService.printPaymentList(dao.getAllMyPayments(userService.getUser().getUserId()));
+				userService.printPaymentList(dao.getAllMyPayments(userService.getUser().getUserId(),true));
 
 			break;
 			case "6"://logout -done
@@ -229,11 +229,11 @@ private static Logger log = Logger.getRootLogger();
 				
 				case "1"://print out the lot list -done
 					System.out.println("\n" + "All cars on the lot: ");
-					userService.printLotList(dao.getAllCars());		
+					userService.printLotList(dao.getAllCars(true));		
 					break;
 				case "2"://check all offers -done
 					System.out.println("\n" + "All offers:");
-					userService.printOfferList(dao.getAllOffers());
+					userService.printOfferList(dao.getAllOffers(true));
 					break;
 				case "3"://add a car to the lot public Car(String make, String model, String color, String vinNum)  -done
 					String make;
@@ -253,7 +253,7 @@ private static Logger log = Logger.getRootLogger();
 					price = Double.valueOf(sc.nextLine());
 					
 					Car newCar = new Car(make, model, color, vinNum, price);
-					dao.addCar(newCar);
+					dao.addCar(newCar,true);
 					
 					
 					break;
@@ -261,31 +261,31 @@ private static Logger log = Logger.getRootLogger();
 					System.out.println("\n" + "What is the vin numer of the car you would like to remove?");
 					vinNum = sc.nextLine();
 					
-					dao.removeCar(vinNum);
+					dao.removeCar(vinNum,true);
 					break;
-				case "5"://view all offers on a car
-					System.out.println("\n" + "What is the vin numer of the car you would like to to see offers on?");
-					vinNum = sc.nextLine();
-					carLot.printCarOffers(vinNum);
-					break;
+//				case "5"://view all offers on a car  
+//					System.out.println("\n" + "What is the vin numer of the car you would like to to see offers on?");
+//					vinNum = sc.nextLine();
+//					carLot.printCarOffers(vinNum);
+//					break;
 				case "6"://view all cars and their payment history-done
 					
-					userService.printPaymentList(dao.getAllPayments());
+					userService.printPaymentList(dao.getAllPayments(true));
 					
 					
 					break;
 				case "7"://Accept a vehicle offer-done
 					
-					userService.printOfferList(dao.getAllOffers());
+					userService.printOfferList(dao.getAllOffers(true));
 					
 					System.out.println("\n" + "What is the offer number you would like to accept?");
 					
 					int offerid = Integer.valueOf(sc.nextLine());
 					
-					Car c = dao.getCar(dao.getOffer(offerid).getVinNumber());
-					c.setOwner(dao.getOffer(offerid).getUserId());
-					dao.acceptOffer(dao.getOffer(offerid));
-					dao.populatePayments(c);
+					Car c = dao.getCar(dao.getOffer(offerid,true).getVinNumber(),true);
+					c.setOwner(dao.getOffer(offerid,true).getUserId());
+					dao.acceptOffer(dao.getOffer(offerid,true),true);
+					dao.populatePayments(c,true);
 					
 					
 	
@@ -297,7 +297,7 @@ private static Logger log = Logger.getRootLogger();
 					int offerId = Integer.valueOf(sc.nextLine());
 
 				
-					dao.rejectOffer(offerId);
+					dao.rejectOffer(offerId,true);
 					
 					break;
 				case "9"://start sale!
@@ -306,7 +306,7 @@ private static Logger log = Logger.getRootLogger();
 						
 						
 						//call procedure
-						dao.sundaySundaySunday();
+						dao.sundaySundaySunday(true);
 						
 						
 						userService.setSale(true);
@@ -323,7 +323,7 @@ private static Logger log = Logger.getRootLogger();
 						
 						
 						//call procedure
-						dao.mondayMondayMonday();
+						dao.mondayMondayMonday(true);
 						
 						userService.setSale(false);
 						

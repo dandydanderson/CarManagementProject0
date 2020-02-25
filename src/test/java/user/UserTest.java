@@ -33,19 +33,19 @@ public class UserTest {
 
 	
 	
-	@Test
-	public void userGetLotTest() {//need to come back and mockito this guy instead of integration testing, but for now
-		
-		CarLot testCarLot = new CarLot("Test Car Lot");
-		Car testCar = new Car("Chevrolet", "Sonic LT", "Red", "1G1YG2DW4D5106591");
-		testCarLot.addCar(testCar);
-		CarDao carDao = new CarDao();
-		carDao.write(testCarLot);
-		testCarLot = carDao.read();
-		User testUser = new User("Mr. Test");
-		UserServices uS = new UserServices();
-	
-		assertEquals("This should allow the user to get the lot", testCarLot, uS.getCarLot());
-
-}
+//	@Test
+//	public void userGetLotTest() {//need to come back and mockito this guy instead of integration testing, but for now
+//		
+//		CarLot testCarLot = new CarLot("Test Car Lot");
+//		Car testCar = new Car("Chevrolet", "Sonic LT", "Red", "1G1YG2DW4D5106591");
+//		testCarLot.addCar(testCar);
+//		CarDao carDao = new CarDao();
+//		carDao.write(testCarLot);
+//		testCarLot = carDao.read();
+//		User testUser = new User("Mr. Test");
+//		UserServices uS = new UserServices();
+//	
+//		assertEquals("This should allow the user to get the lot", testCarLot, uS.getCarLot());
+//
+//}
 }

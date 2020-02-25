@@ -16,6 +16,8 @@ public class CarTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
+		
 	}
 
 	@AfterClass
@@ -39,17 +41,17 @@ public class CarTest {
 //			payments.add(payment);
 //		}
 //	}
-	@Test
-	public void testPopulatePayments() {
-		
-		Car car = new Car("Chevrolet", "Sonic", "Red", "REDSONIC");
-		car.setPrice(6000);
-		car.populatePayments();
-		
-		assertEquals("This should populate the payments list in the car- ", false, car.getPayments().isEmpty());
-		
-	}
-	
+//	@Test
+//	public void testPopulatePayments() {
+//		
+//		Car car = new Car("Chevrolet", "Sonic", "Red", "REDSONIC", 12000);
+//		car.setPrice(6000);
+//		car.populatePayments();
+//		
+//		assertEquals("This should populate the payments list in the car- ", false, car.getPayments().isEmpty());
+//		
+//	}
+//	
 //	
 //	public void printPayments() {
 //		for(int i = 0;i<payments.size();i++) {

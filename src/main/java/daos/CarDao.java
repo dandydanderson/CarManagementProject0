@@ -44,9 +44,9 @@ public class CarDao implements Dao {
 	
 
 	@Override
-	public void addCar(Car car) {
+	public void addCar(Car car, boolean active) {
 		
-		try (Connection conn = ConnectionFactory.getConnection()){
+		try (Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO cars values(?,?,?,?,?,?)");//vin_number,make,model,color,price,owner
 			
@@ -70,9 +70,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void addOffer(Offer offer) {
+	public void addOffer(Offer offer, boolean active) {
 		
-		try (Connection conn = ConnectionFactory.getConnection()){
+		try (Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO offers(user_id, vin_number, offer_amount, active) values(?,?,?,?)");//offer_id, user_id, vin_number, amount, accepted
 			
@@ -94,9 +94,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void addUser(User user) {
+	public void addUser(User user, boolean active) {
 
-		try (Connection conn = ConnectionFactory.getConnection()){
+		try (Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO users(username,password, user_type) values(?,?,?)");//user_id, username, password, user_type
 			
@@ -118,11 +118,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public Car getCar(String vinNumber) {	
+	public Car getCar(String vinNumber, boolean active) {	
 		
 	Car c = null;
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from cars where (vin_number = ?)");
 			ps.setString(1, vinNumber);
@@ -147,12 +147,12 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Car> getAllCars() {
+	public List<Car> getAllCars(boolean active) {
 		
 		List<Car> carList = new ArrayList<Car>();
 		Car c = null;
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from cars where owner = 1");
 			ResultSet rs = ps.executeQuery();
@@ -177,11 +177,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public Offer getOffer(int offerid) {//need
+	public Offer getOffer(int offerid, boolean active) {//need
 		
 		Offer o = null;
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from offers where (offer_id = ?)");
 			ps.setInt(1, offerid);
@@ -207,12 +207,12 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Offer> getAllOffers() {
+	public List<Offer> getAllOffers(boolean active) {
 
 	Offer o = null;
 	List<Offer> offerList = new ArrayList<Offer>();
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from offers order by active desc");
 			
@@ -237,11 +237,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public User getUser(String username, String password) {
+	public User getUser(String username, String password, boolean active) {
 		
 		User u = null;
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("Select * from users where (username = ? and password = ?)");
 			ps.setString(1, username);
@@ -266,15 +266,15 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<User> getAllUsers() {//skip for now
+	public List<User> getAllUsers(boolean active) {//skip for now
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void rejectOffer(int offerId) {
+	public void rejectOffer(int offerId, boolean active) {
 
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("delete from offers where offer_id = ?");
 			ps.setInt(1, offerId);
@@ -289,9 +289,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void acceptOffer(Offer offer) {
+	public void acceptOffer(Offer offer, boolean active) {
 
-		try(Connection conn = ConnectionFactory.getConnection()){//this changes the car ownership from the lot to the user, and sets the price
+		try(Connection conn = ConnectionFactory.getConnection(active)){//this changes the car ownership from the lot to the user, and sets the price
 			
 			PreparedStatement ps = conn.prepareStatement("update cars set owner = ?, price = ? where vin_number = ?" );
 			ps.setInt(1, offer.getUserId());
@@ -308,7 +308,7 @@ public class CarDao implements Dao {
 		}
 		
 		
-		try(Connection conn = ConnectionFactory.getConnection()){//this sets all other offers of the same vin to false
+		try(Connection conn = ConnectionFactory.getConnection(active)){//this sets all other offers of the same vin to false
 			
 			PreparedStatement ps = conn.prepareStatement("update offers set active = false where vin_number = ?");
 			ps.setString(1, offer.getVinNumber());
@@ -324,10 +324,10 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void removeCar(String vinNumber) {
+	public void removeCar(String vinNumber, boolean active) {
 
 
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			PreparedStatement ps = conn.prepareStatement("delete from cars where vin_number = ?");
 			ps.setString(1, vinNumber);
@@ -343,11 +343,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Offer> getAllMyOffers(int userId) {
+	public List<Offer> getAllMyOffers(int userId, boolean active) {
 		Offer o = null;
 		List<Offer> offerList = new ArrayList<Offer>();
 			
-			try(Connection conn = ConnectionFactory.getConnection()){
+			try(Connection conn = ConnectionFactory.getConnection(active)){
 				
 				PreparedStatement ps = conn.prepareStatement("Select * from offers where user_id = ?");
 				ps.setInt(1, userId);
@@ -373,11 +373,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Car> getAllMyCars(int userId) {
+	public List<Car> getAllMyCars(int userId, boolean active) {
 		Car c = null;
 		List<Car> carList = new ArrayList<Car>();
 			
-			try(Connection conn = ConnectionFactory.getConnection()){
+			try(Connection conn = ConnectionFactory.getConnection(active)){
 				
 				PreparedStatement ps = conn.prepareStatement("Select * from cars where owner = ?");
 				ps.setInt(1, userId);
@@ -405,9 +405,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void populatePayments(Car car) {
+	public void populatePayments(Car car, boolean active) {
 
-		try (Connection conn = ConnectionFactory.getConnection()){
+		try (Connection conn = ConnectionFactory.getConnection(active)){
 			
 			LocalDate today = LocalDate.now();
 			
@@ -436,11 +436,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Payment> getAllMyPayments(int userId) {
+	public List<Payment> getAllMyPayments(int userId, boolean active) {
 		Payment p = null;
 		List<Payment> paymentList = new ArrayList<Payment>();
 			
-			try(Connection conn = ConnectionFactory.getConnection()){
+			try(Connection conn = ConnectionFactory.getConnection(active)){
 				
 				PreparedStatement ps = conn.prepareStatement("Select * from payments where user_id = ? order by due_date");
 				ps.setInt(1, userId);
@@ -466,11 +466,11 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public List<Payment> getAllPayments() {
+	public List<Payment> getAllPayments(boolean active) {
 		Payment p = null;
 		List<Payment> paymentList = new ArrayList<Payment>();
 			
-			try(Connection conn = ConnectionFactory.getConnection()){
+			try(Connection conn = ConnectionFactory.getConnection(active)){
 				
 				PreparedStatement ps = conn.prepareStatement("Select * from payments order by due_date, user_id");
 				ResultSet rs = ps.executeQuery();
@@ -497,9 +497,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void sundaySundaySunday() {//takes 20% of the price of cars on the lot
+	public void sundaySundaySunday(boolean active) {//takes 20% of the price of cars on the lot
 		
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			CallableStatement cs = conn.prepareCall("call sundaySundaySunday()");
 			cs.execute();
@@ -513,9 +513,9 @@ public class CarDao implements Dao {
 	}
 
 	@Override
-	public void mondayMondayMonday() {//returns the cars to their original price
+	public void mondayMondayMonday(boolean active) {//returns the cars to their original price
 	
-		try(Connection conn = ConnectionFactory.getConnection()){
+		try(Connection conn = ConnectionFactory.getConnection(active)){
 			
 			CallableStatement cs = conn.prepareCall("call mondayMondayMonday()");
 			cs.execute();

@@ -219,3 +219,66 @@
 2020-02-25 12:45:21 INFO  root:355 - End of user session for: User [name=John]
 2020-02-25 12:56:47 INFO  root:30 - Beginning of user session for: User [name=null]
 2020-02-25 12:57:57 INFO  root:355 - End of user session for: User [name=John]
+2020-02-25 14:06:11 INFO  root:30 - Beginning of user session for: User [name=null]
+2020-02-25 14:06:39 INFO  root:355 - End of user session for: User [name=John]
+2020-02-25 14:24:01 INFO  root:30 - Beginning of user session for: User [name=null]
+2020-02-25 14:24:17 INFO  root:355 - End of user session for: User [name=John]
+2020-02-25 14:33:15 INFO  root:30 - Beginning of user session for: User [name=null]
+2020-02-25 14:34:02 INFO  root:355 - End of user session for: User [name=John]
+2020-02-25 14:47:30 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 14:49:10 WARN  root:66 - The car was not added to the lot.
+2020-02-25 14:49:10 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 14:49:21 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 14:49:21 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 14:54:48 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 14:54:49 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 14:54:49 WARN  root:90 - The car was not added to the lot.
+2020-02-25 14:56:17 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 14:56:17 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 14:56:17 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=BLUESONIC, owner=0]
+2020-02-25 14:56:17 INFO  root:86 - Offer added: Offer [offerId=0, userId=2, vinNumber=BLUESONIC, amount=10000.0, active=true]
+2020-02-25 15:02:46 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:02:46 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:03:13 INFO  root:30 - Beginning of user session for: User [name=null]
+2020-02-25 15:03:34 INFO  root:110 - User added: User [name=Harry]
+2020-02-25 15:03:51 INFO  root:355 - End of user session for: User [name=Harry]
+2020-02-25 15:03:55 INFO  root:30 - Beginning of user session for: User [name=null]
+2020-02-25 15:04:07 INFO  root:110 - User added: User [name=Harry]
+2020-02-25 15:04:26 INFO  root:355 - End of user session for: User [name=Harry]
+2020-02-25 15:09:26 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:09:26 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:09:26 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:10:23 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:10:24 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:10:24 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:20:50 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:20:50 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:20:50 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:22:26 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:22:27 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:22:27 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:27:49 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:27:49 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:27:49 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:29:20 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:29:20 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:29:20 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:34:36 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:34:36 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:34:36 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:35:31 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:35:31 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:35:31 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:40:05 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:40:05 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:40:05 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:40:06 INFO  root:506 - Sale began.
+2020-02-25 15:41:06 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:41:06 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:41:06 INFO  root:110 - User added: User [name=customer1]
+2020-02-25 15:41:06 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:41:06 INFO  root:506 - Sale began.
+2020-02-25 15:41:06 INFO  root:336 - Car removed from the lot: REDSONIC
+2020-02-25 15:42:25 INFO  root:62 - Car added to the lot: Car [price=12000.0, make=Chevrolet, model=Sonic, color=Red, vinNum=REDSONIC, owner=0]
+2020-02-25 15:42:25 INFO  root:522 - Sale ended
+2020-02-25 15:42:26 INFO  root:336 - Car removed from the lot: REDSONIC
