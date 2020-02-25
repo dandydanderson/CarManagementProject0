@@ -15,15 +15,25 @@ public class Car implements Serializable{
 	private String model;
 	private String color;
 	private String vinNum;//could eventually check arguments on this
+	private int owner;
+	public int getOwner() {
+		return owner;
+	}
+	public void setOwner(int owner) {
+		this.owner = owner;
+	}
 	private List<Offer> offers = new ArrayList<Offer>(); //this will be customer name and either offer amount or an "offer" object depending on necessary complexity
 	private List<Payment> payments = new ArrayList<Payment>();
 	
-	public Car(String make, String model, String color, String vinNum) {
+	public Car(String make, String model, String color, String vinNum, double price) {
 		super();
 		this.make = make;
 		this.model = model;
 		this.color = color;
 		this.vinNum = vinNum;
+		this.price = price;
+	}
+	public Car() {
 	}
 	public List<Offer> getOffers() {
 		return offers;
@@ -33,7 +43,6 @@ public class Car implements Serializable{
 	}
 	
 	public void addOffer(Offer offer) {
-		offer.setCar(this);
 		offers.add(offer);
 	}
 	
@@ -79,15 +88,15 @@ public class Car implements Serializable{
 		this.price = price;
 	}
 	
-	public void populatePayments() {
-		
-		for(int i = 0; i<60;i++) {
-			Payment payment = new Payment();
-			payment.setDueDate(LocalDate.now().plusMonths(i));
-			payment.setAmount(price/60.0);
-			payments.add(payment);
-		}
-	}
+//	public void populatePayments() {--deprecated
+//		
+//		for(int i = 0; i<60;i++) {
+//			Payment payment = new Payment();
+//			payment.setDueDate(LocalDate.now().plusMonths(i));
+//			payment.setAmount(price/60.0);
+//			payments.add(payment);
+//		}
+//	}
 	
 	public List<Payment> getPayments() {
 		return payments;
@@ -102,9 +111,11 @@ public class Car implements Serializable{
 	}
 	
 	
+	
 	@Override
 	public String toString() {
-		return vinNum + " " + color + " " + make + " " + model ;
+		return "Car [price=" + price + ", make=" + make + ", model=" + model + ", color=" + color + ", vinNum=" + vinNum
+				+ ", owner=" + owner + "]";
 	}
 	@Override
 	public int hashCode() {

@@ -144,11 +144,11 @@ public class CarLot implements Serializable{
 	}//this is a repeat method, but cleaner than the other. Need to refactor out the addCarToCustomer method and replace it with this
 	public Customer getCustomerFromCarOffer(Car car, String offerNum) {
 		Customer temp = new Customer("Null");
-		for(int i = 0;i<car.getOffers().size();i++) {
-		if(car.getOffers().get(i).getOfferId().equals(offerNum)) {
-			return car.getOffers().get(i).getOwner();
-		}
-		}
+//		for(int i = 0;i<car.getOffers().size();i++) {
+//		if(car.getOffers().get(i).getOfferId().equals(offerNum)) {
+//			return car.getOffers().get(i).getOwner();
+//		}
+//		}
 		return temp;
 	}
 	
@@ -173,12 +173,12 @@ public class CarLot implements Serializable{
 	
 	public void addOffer(Offer offer, String vinNum) {
 		
-		for (int i = 0;i<cars.size();i++) {
-			if(cars.get(i).getVinNum().equals(vinNum)) {
-				offer.setOfferId(String.valueOf(cars.get(i).getOffers().size()));
-				cars.get(i).addOffer(offer);
-			}
-		}
+//		for (int i = 0;i<cars.size();i++) {
+//			if(cars.get(i).getVinNum().equals(vinNum)) {
+//				offer.setOfferId(String.valueOf(cars.get(i).getOffers().size()));
+//				cars.get(i).addOffer(offer);
+//			}
+//		}
 	}
 //	public void removeOffer(Offer offer) {
 //		for(int i = 0; i<offers.size();i++) {
@@ -190,13 +190,13 @@ public class CarLot implements Serializable{
 	
 	public void printMyOffers(Customer cust) {
 		
-		for(int i = 0; i<cars.size();i++) {
-			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
-				if(cars.get(i).getOffers().get(j).getOwner().equals(cust)){
-					System.out.println(cars.get(i).getOffers().get(j).toString());
-				}
-			}
-		}
+//		for(int i = 0; i<cars.size();i++) {
+//			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
+//				if(cars.get(i).getOffers().get(j).getOwner().equals(cust)){
+//					System.out.println(cars.get(i).getOffers().get(j).toString());
+//				}
+//			}
+//		}
 			
 	}
 	
@@ -210,24 +210,24 @@ public class CarLot implements Serializable{
 	
 	
 	public Offer getAcceptedOffer(String vinNum, String offerId) {
-		for(int i = 0;i<cars.size();i++) {
-			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
-				if(cars.get(i).getOffers().get(j).getOfferId().equals(offerId) && cars.get(i).getVinNum().equals(vinNum)) {//if the offer number and vin number match
-				return cars.get(i).getOffers().get(j);
-				}
-			}
-		}
+//		for(int i = 0;i<cars.size();i++) {
+//			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
+//				if(cars.get(i).getOffers().get(j).getOfferId().equals(offerId) && cars.get(i).getVinNum().equals(vinNum)) {//if the offer number and vin number match
+//				return cars.get(i).getOffers().get(j);
+//				}
+//			}
+//		}
 		return null;
 	}
 	
 	public void rejectOffer(String vinNum, String offerId) {
-		for(int i = 0;i<cars.size();i++) {
-			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
-				if(cars.get(i).getOffers().get(j).getOfferId().equals(offerId) && cars.get(i).getVinNum().equals(vinNum)) {//if the offer number and vin number match
-				cars.get(i).getOffers().remove(cars.get(i).getOffers().get(j));
-				}
-			}
-		}
+//		for(int i = 0;i<cars.size();i++) {
+//			for(int j = 0;j<cars.get(i).getOffers().size();j++) {
+//				if(cars.get(i).getOffers().get(j).getOfferId().equals(offerId) && cars.get(i).getVinNum().equals(vinNum)) {//if the offer number and vin number match
+//				cars.get(i).getOffers().remove(cars.get(i).getOffers().get(j));
+//				}
+//			}
+//		}
 	}
 //	public void cleanOffers(String vinNum) {//no longer needed
 //		for(int i = 0;i<offers.size();i++) {

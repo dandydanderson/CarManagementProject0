@@ -3,49 +3,38 @@ package carlot;
 import java.io.Serializable;
 
 import user.Customer;
+import user.User;
 
 public class Offer implements Serializable{
 
-	private String offerId;
-	private Customer owner;
+	private int offerId;
+	private int userId;
+	private String vinNumber;
 	private double amount;
 	private boolean active;
-	private Car car;
-	
-	
-	public Offer(Customer owner, double amount, boolean active) {
-		super();
-		this.owner = owner;
-		this.amount = amount;
-		this.active = active;
-	}
-	
-	@Override
-	public String toString() {
-		return  "Offer ID: " + offerId + " " + car.toString() + " Customer: " + owner.getName() + " Offer Amount: " + amount;
-	}
-
-	
-	public String getOfferId() {
+	public int getOfferId() {
 		return offerId;
 	}
-
-	public void setOfferId(String offerId) {
+	public void setOfferId(int offerId) {
 		this.offerId = offerId;
 	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public int getUserId() {
+		return userId;
 	}
-
-	public Customer getOwner() {
-		return owner;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public void setOwner(Customer owner) {
-		this.owner = owner;
+	public String getVinNumber() {
+		return vinNumber;
+	}
+	public void setVinNumber(String vinNumber) {
+		this.vinNumber = vinNumber;
 	}
 	public double getAmount() {
 		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	public boolean isActive() {
 		return active;
@@ -53,12 +42,24 @@ public class Offer implements Serializable{
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public Car getCar() {
-		return car;
+	@Override
+	public String toString() {
+		return "Offer [offerId=" + offerId + ", userId=" + userId + ", vinNumber=" + vinNumber + ", amount=" + amount
+				+ ", active=" + active + "]";
 	}
-	public void setCar(Car car) {
-		this.car = car;
+	public Offer(int userId, String vinNumber, double amount, boolean active) {
+		super();
+		this.userId = userId;
+		this.vinNumber = vinNumber;
+		this.amount = amount;
+		this.active = active;
 	}
+	public Offer() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 	
 	
 	

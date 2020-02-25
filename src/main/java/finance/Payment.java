@@ -6,16 +6,34 @@ import java.util.Date;
 
 public class Payment implements Serializable{
 	
-	private LocalDate dueDate;
+	private int paymentId;
+	private String vinNumber;
+	private int owner;
+	private String dueDate;
 	private double amount;
-	private boolean paid;
-	
-	
-	public LocalDate getDueDate() {
+	public int getPaymentId() {
+		return paymentId;
+	}
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
+	}
+	public String getVinNumber() {
+		return vinNumber;
+	}
+	public void setVinNumber(String vinNumber) {
+		this.vinNumber = vinNumber;
+	}
+	public int getOwner() {
+		return owner;
+	}
+	public void setOwner(int owner) {
+		this.owner = owner;
+	}
+	public String getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(LocalDate localDate) {
-		this.dueDate = localDate;
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 	public double getAmount() {
 		return amount;
@@ -23,15 +41,13 @@ public class Payment implements Serializable{
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public boolean isPaid() {
-		return paid;
-	}
-	public void setPaid(boolean paid) {
-		this.paid = paid;
-	}
 	@Override
 	public String toString() {
-		return "Payment [dueDate=" + dueDate + ", amount=" + amount + ", paid=" + paid + "]";
+		return "Payment [paymentId=" + paymentId + ", owner=" + owner + ", dueDate="
+				+ dueDate + ", vinNumber=" + vinNumber + ", amount=" + amount + "]";
+	}
+	public Payment() {
+		super();
 	}
 	
 	
